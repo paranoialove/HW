@@ -22,18 +22,18 @@ public class IdVerification {
         //將第一碼英文  字元轉字串  以供搜尋
         String c00 = String.valueOf(c0);
 
-        //判斷英文字對應
+        //判斷英文字對應縣市
         String[] city;
         city = new String[]{"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "U", "V", "X", "Y", "W", "Z", "I",};
         //搜尋英文字對應之索引數字(int)
         int s2 = 0;
 
         //檢查格式(重要！！)
-        if (Character.isDigit(Arrays.binarySearch(city, c00))) {
+        if (id.matches("[A-Z]{1}[1-2]{1}[0-9]{8}")) {
             s2 = Arrays.binarySearch(city, c00);
             System.out.println("帳號格式正確");
         } else {
-            System.out.println("身分證字首格式錯誤！");
+            System.out.println("身分證字首格式錯誤！(大小寫或者亂碼)");
             return;
         }
 
@@ -62,6 +62,8 @@ public class IdVerification {
         System.out.println("餘數為：" + z);
         if (z % 10 == 0) {
             System.out.println("此身分證字號有效。");
+        } else {
+            System.out.println("此身分證字號無效。");
         }
 
     }
